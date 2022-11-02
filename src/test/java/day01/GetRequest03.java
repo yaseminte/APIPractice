@@ -274,8 +274,97 @@ public class GetRequest03 {
         assertEquals("application/json; charset=utf-8", response.getContentType());
 
         // 2) assertThat ile
+        response.then().assertThat().
+                statusCode(200).
+                statusLine("HTTP/1.1 200 OK").
+                contentType("application/json; charset=utf-8");
+
+
+        // 3) Matcher Class ile
+        response.then().body("data[4].id",equalTo(5));
+        response.then().body("data[4].email",equalTo("charles.morris@reqres.in"));
+        response.then().body("data[4].first_name",equalTo("Charles"));
+        response.then().body("data[4].last_name",equalTo("Morris"));
+        response.then().body("data[4].avatar",equalTo("https://reqres.in/img/faces/5-image.jpg"));
+
+        response.then().body("support.url",equalTo("https://reqres.in/#support-heading"));
+        response.then().body("support.text",equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
+
+
+        // altnernative
+        response.then().body("data[4].id",equalTo(5),
+                "data[4].email",equalTo("charles.morris@reqres.in"),
+                "data[4].first_name",equalTo("Charles"),
+                "data[4].last_name",equalTo("Morris"),
+                "data[4].avatar",equalTo("https://reqres.in/img/faces/5-image.jpg"));
+
+        response.then().body("support.url",equalTo("https://reqres.in/#support-heading"),
+                "support.text",equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
+
 
 
     }
+
+    @Test
+    public void test06(){
+
+        /*
+        {
+          "data": {
+                "id": 6,
+                "email": "tracey.ramos@reqres.in",
+                "first_name": "Tracey",
+                "last_name": "Ramos",
+                "avatar": "https://reqres.in/img/faces/6-image.jpg"
+        },
+         "support": {
+                 "url": "https://reqres.in/#support-heading",
+                 "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
+        }
+         */
+
+        Response response = given().when().get(url);
+
+        // HEADER TESTI IÇIN
+
+        // 1) JUnit Assert
+
+        assertEquals(200,response.getStatusCode());
+        assertEquals("HTTP/1.1 200 OK",response.getStatusLine());
+        assertEquals("application/json; charset=utf-8",response.getContentType());
+
+        // 2) assertThat ile
+
+        response.then().assertThat()
+                .statusCode(200)
+                .statusLine("HTTP/1.1 200 OK")
+                .contentType("application/json; charset=utf-8");
+
+
+        // 3) Matcher Class ile
+        response.then().body("data[5].id",equalTo(6));
+        response.then().body("data[5].email",equalTo("tracey.ramos@reqres.in"));
+        response.then().body("data[5].first_name",equalTo("Tracey"));
+        response.then().body("data[5].last_name",equalTo("Ramos"));
+        response.then().body("data[5].avatar",equalTo("https://reqres.in/img/faces/6-image.jpg"));
+
+        response.then().body("support.url",equalTo("https://reqres.in/#support-heading"));
+        response.then().body("support.text",equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
+
+        // 4) alternative
+        response.then().body("data[5].id",equalTo(6),
+                "data[5].email",equalTo("tracey.ramos@reqres.in"),
+                "data[5].first_name",equalTo("Tracey"),
+                "data[5].last_name",equalTo("Ramos"),
+                "data[5].avatar", equalTo("https://reqres.in/img/faces/6-image.jpg"));
+
+        response.then().body("support.url",equalTo("https://reqres.in/#support-heading"),
+                "support.text",equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
+
+
+
+
+    }
+
 
 }
