@@ -28,6 +28,10 @@ public class GetRequest03 {
                 "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
             }
         }
+           statusCode = 200
+           statusLine = "HTTP/1.1 200 OK";
+           Content-Type = "application/json; charset=utf-8"
+
          */
 
 
@@ -41,7 +45,7 @@ public class GetRequest03 {
         assertEquals("HTTP/1.1 200 OK", response.getStatusLine());
         assertEquals("application/json; charset=utf-8", response.getContentType());
 
-        // 2) assertthat ile
+        // 2) assertThat ile
         response.then().assertThat().
                 statusCode(200).
                 statusLine("HTTP/1.1 200 OK").
@@ -60,7 +64,7 @@ public class GetRequest03 {
         response.then().body("support.text",equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
 
 
-        // altnernative
+        // SoftAssert ile
         response.then().body("data[0].id",equalTo(1),
                 "data[0].email",equalTo("george.bluth@reqres.in"),
                 "data[0].first_name",equalTo("George"),
@@ -87,6 +91,9 @@ public class GetRequest03 {
                "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
            }
             }
+               statusCode = 200
+               statusLine = "HTTP/1.1 200 OK";
+               Content-Type = "application/json; charset=utf-8"
          */
 
         Response response = given().when().get(url);
@@ -118,7 +125,7 @@ public class GetRequest03 {
         response.then().body("support.text",equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
 
 
-        // altnernative
+        // SoftAssert ile
         response.then().body("data[1].id",equalTo(2),
                 "data[1].email",equalTo("janet.weaver@reqres.in"),
                 "data[1].first_name",equalTo("Janet"),
@@ -146,6 +153,9 @@ public class GetRequest03 {
             "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
             }
         }
+           statusCode = 200
+           statusLine = "HTTP/1.1 200 OK";
+           Content-Type = "application/json; charset=utf-8"
          */
 
         Response response =given().when().get(url);
@@ -177,7 +187,7 @@ public class GetRequest03 {
         response.then().body("support.text",equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
 
 
-        // altnernative
+        // SoftAssert ile
         response.then().body("data[2].id",equalTo(3),
                 "data[2].email",equalTo("emma.wong@reqres.in"),
                 "data[2].first_name",equalTo("Emma"),
@@ -205,6 +215,9 @@ public class GetRequest03 {
                 "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
             }
         }
+           statusCode = 200
+           statusLine = "HTTP/1.1 200 OK";
+           Content-Type = "application/json; charset=utf-8"
          */
 
         Response response = given().when().get(url);
@@ -233,7 +246,7 @@ public class GetRequest03 {
         response.then().body("support.text",equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
 
 
-        // altnernative
+        // SoftAssert ile
         response.then().body("data[3].id",equalTo(4),
                 "data[3].email",equalTo("eve.holt@reqres.in"),
                 "data[3].first_name",equalTo("Eve"),
@@ -262,6 +275,9 @@ public class GetRequest03 {
                 "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
             }
         }
+           statusCode = 200
+           statusLine = "HTTP/1.1 200 OK";
+           Content-Type = "application/json; charset=utf-8"
          */
 
         Response response = given().when().get(url);
@@ -291,7 +307,7 @@ public class GetRequest03 {
         response.then().body("support.text",equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
 
 
-        // altnernative
+        // SoftAssert ile
         response.then().body("data[4].id",equalTo(5),
                 "data[4].email",equalTo("charles.morris@reqres.in"),
                 "data[4].first_name",equalTo("Charles"),
@@ -321,6 +337,9 @@ public class GetRequest03 {
                  "url": "https://reqres.in/#support-heading",
                  "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
         }
+           statusCode = 200
+           statusLine = "HTTP/1.1 200 OK";
+           Content-Type = "application/json; charset=utf-8"
          */
 
         Response response = given().when().get(url);
@@ -351,7 +370,7 @@ public class GetRequest03 {
         response.then().body("support.url",equalTo("https://reqres.in/#support-heading"));
         response.then().body("support.text",equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
 
-        // 4) alternative
+        // 4) SoftAssert ile
         response.then().body("data[5].id",equalTo(6),
                 "data[5].email",equalTo("tracey.ramos@reqres.in"),
                 "data[5].first_name",equalTo("Tracey"),
